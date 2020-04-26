@@ -58,3 +58,5 @@ for index, label in enumerate(label_list):
     print("\tRecall\t\t=\t{:.2f}".format(recall[index]))
     print("\tF1 Score\t=\t{:.2f}".format(f1_score[index]))
 
+# Program is complete
+
