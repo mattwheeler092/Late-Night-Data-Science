@@ -2,7 +2,29 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+class LinearRegression:
+    
+    def __init__(fit_intercept = True, normalize = False):
+        intercept = fit_intercept
+        if !(fit_intercept): 
+            normalize_input = False
+        else:
+            normalize_input = normalize
+        coef_ = np.empty()
+        intercept_ = 0.0
+        
+    def fit(self, X, y):
+        
+        return 0
+    
+    def predict(self, X):
+        
+        return 0
+    
+    def score(self, X, y):
+        
+        return 0
+        
 
 file_name = "Regression_Data_Single_Feature.csv"
 
