@@ -51,22 +51,28 @@ class LinearRegression:
         return prediction
     
     
-    def score(self, X, y):
-        """Function to compute the R score the fitted regression model
+    def score(self, X, y, adjusted = True):
+        """Function to compute the R^2 score the fitted regression model
         Arguments:
             X {ndarray (N x M)} -- 2d numpy array holding the M feature values for the N input data points
             y {ndarray (N x 1)} -- 1d numpy array holding the true output values to compare against
+            adjusted {bool} -- Boolean to indicate if the score is the adjusted R^2 score or just R^2 score (default: {True})
         Raises:
             ValueError: Error raised when the regression model hasn't been fit to any data
         Returns:
-            float -- Returns the R score for the input data
+            float -- Returns the R^2 score for the input data
         """
         if self.coeff_.size == 0:
             raise ValueError("No data has been fit to the linear regression model.")
         y_pred = self.predict(X)
         u = sum(list(map(lambda val : val ** 2, y - y_pred)))
         v = sum(list(map(lambda val : val ** 2, y - np.mean(y))))
-        return (1 - u / v)
+        n = X.shape[0]
+        k = self.coeff_.size
+        if adjusted:
+            return 1 - (((n - 1)/(n - k - 1)) * (1 - u / v))
+        else:
+            return 1 - u / v
 
 
 
@@ -90,12 +96,12 @@ def main():
     # Fit the linear regression model to the loaded data
     model.fit(X,y)
     
-    # Compute the R score using the loaded data
-    R_value = model.score(X,y)
+    # Compute the R^2 score using the loaded data
+    R_value = model.score(X, y, adjusted = True)
     
-    # Print the model intercept, coefficient values and R score
+    # Print the model intercept, coefficient values and R^2 score
     print("Intercept\t=\t{}\nCoeffs\t\t=\t{}".format(model.intercept_, model.coeff_))
-    print("R score\t\t=\t{}".format(R_value))
+    print("R^2 score\t=\t{}".format(R_value))
     
     """ CODE FOR PLOTTING THE RESULTS FOR 2D DATA """
     

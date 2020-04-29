@@ -21,12 +21,12 @@ model = LinearRegression(fit_intercept = True)
 # Fit the linear regression model to the loaded data
 model.fit(X,y)
 
-# Compute the R score using the loaded data
+# Compute the R^2 score using the loaded data
 R_value = model.score(X,y)
 
-# Print the model intercept, coefficient values and R score
+# Print the model intercept, coefficient values and R^2 score
 print("Intercept\t=\t{}\nCoeffs\t\t=\t{}".format(model.intercept_, model.coef_))
-print("R score\t\t=\t{}".format(R_value))
+print("R^2 score\t\t=\t{}".format(R_value))
 
 """ CODE FOR PLOTTING THE RESULTS FOR 2D DATA """
     
