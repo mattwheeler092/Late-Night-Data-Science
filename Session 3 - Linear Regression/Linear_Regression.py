@@ -85,7 +85,7 @@ def main():
     X = data[X_features].values
     
     # Create a linear regression model object
-    model = LinearRegression(fit_intercept = False)
+    model = LinearRegression(fit_intercept = True)
     
     # Fit the linear regression model to the loaded data
     model.fit(X,y)
@@ -101,9 +101,10 @@ def main():
     
     # Create a linearly distributed sample of predictor values
     X_pred = np.linspace(0,max(y),100)
+    X_pred = np.reshape(X_pred,(100,1))
     
     # Predict the output values of the linear distribution
-    y_pred = model.predict(X_pred.T)
+    y_pred = model.predict(X_pred)
     
     # Plot the fitted data along with the regression line
     plt.plot(X_pred, y_pred, label = "Linear Regression Model")
