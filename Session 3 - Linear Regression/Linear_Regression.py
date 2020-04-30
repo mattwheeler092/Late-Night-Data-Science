@@ -70,7 +70,7 @@ class LinearRegression:
         n = X.shape[0]
         k = self.coeff_.size
         if adjusted:
-            return 1 - (((n - 1)/(n - k - 1)) * (1 - u / v))
+            return 1 - (((n - 1)/(n - k - 1)) * (u / v))
         else:
             return 1 - u / v
 
